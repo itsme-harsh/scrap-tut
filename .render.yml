@@ -1,0 +1,9 @@
+buildCommand: npm install
+startCommand: node index.js
+envVars:
+  - key: NODE_OPTIONS
+    value: "--import=./patch.mjs"
+  - key: PUPPETEER_CACHE_DIR
+    value: "/opt/render/.cache/puppeteer"
+  - key: PUPPETEER_EXECUTABLE_PATH
+    value: "/opt/render/project/src/chromium/chrome"

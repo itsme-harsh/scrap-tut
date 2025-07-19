@@ -1,7 +1,11 @@
+import express from 'express';
 import puppeteer from 'puppeteer-core';
 import chromium from '@sparticuz/chromium-min';
 
-export const scrape = async () => {
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', async (req, res) => {
   try {
     const executablePath = await chromium.executablePath(
       "https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar"
@@ -18,9 +22,13 @@ export const scrape = async () => {
     const title = await page.title();
 
     await browser.close();
-    return title;
-  } catch (error) {
-    console.error("❌ Error in scraping:", error);
-    throw error;
+    res.send(`Title: ${title}`);
+  } catch (err) {
+    console.error('❌ Error in scraping:', err);
+    res.status(500).send('Scraping failed');
   }
-};
+});
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});

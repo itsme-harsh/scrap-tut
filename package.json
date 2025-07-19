@@ -12,10 +12,9 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@sparticuz/chromium": "^138.0.1",
-    "@sparticuz/chromium-min": "^138.0.1",
+   "@sparticuz/chromium-min": "^126.0.0",
+    "puppeteer-core": "^21.3.8",
     "express": "^5.1.0",
-    "puppeteer-core": "^24.12.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
   }
